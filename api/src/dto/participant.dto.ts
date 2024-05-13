@@ -34,3 +34,13 @@ export class signUpDto {
   @IsEmpty()
   IsAdmin?: boolean;
 }
+
+export class signInDto {
+  @IsNotEmpty()
+  @IsString()
+  nick: string;
+
+  @IsNotEmpty()
+  @IsString()
+  password: string;
+}

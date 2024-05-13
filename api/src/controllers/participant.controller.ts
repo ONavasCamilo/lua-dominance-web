@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import {
   getParticipantByIdService,
   getParticipantsService,
+  signInService,
   signUpService,
 } from "../services/participant.service";
 import { JWT_SECRET } from "../config/envs";
@@ -39,7 +40,28 @@ export const signUp = async (req: Request, res: Response) => {
       password,
       confirmpassword,
     });
-    const token = jwt.sign({ id: participant.id }, JWT_SECRET, {expiresIn: '1h'})
+    const token = jwt.sign({ id: participant.id }, JWT_SECRET, {
+      expiresIn: "1h",
+    });
+    res.status(202).json({
+      login: true,
+      token,
+      participant,
+    });
+  } catch (err) {
+    if (err instanceof Error) {
+      res.status(400).json({ statusCode: 400, message: err.message });
+    }
+  }
+};
+
+export const signIn = async (req: Request, res: Response) => {
+  const { nick, password } = req.body;
+  try {
+    const participant = await signInService(nick, password);
+    const token = jwt.sign({ id: participant.id }, JWT_SECRET, {
+      expiresIn: "1h",
+    });
     res.status(202).json({
       login: true,
       token,
@@ -47,7 +69,7 @@ export const signUp = async (req: Request, res: Response) => {
     });
   } catch (err) {
     if (err instanceof Error) {
-      res.status(400).send({ statusCode: 400, message: err.message });
+      res.status(400).json({ statusCode: 400, message: err.message });
     }
   }
 };

@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { signUpDto } from "../dto/participant.dto";
 import { ValidationError, validate } from "class-validator";
 
-export const ParticipantMiddleware = (req: Request, res: Response, next: NextFunction) => {
+export const signUpMiddleware = (req: Request, res: Response, next: NextFunction) => {
     const { nick, discord, password, confirmpassword } = req.body;
 
     const valid = new signUpDto();

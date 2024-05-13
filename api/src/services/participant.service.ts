@@ -1,6 +1,6 @@
 import { signUpDto } from "../dto/participant.dto";
 import ParticipantModel from "../repositories/participant.repository";
-import { hashPassword } from "../utils/passwordManager";
+import { comparePassword, hashPassword } from "../utils/passwordManager";
 
 export const getParticipantsService = async () => {
   const participants = await ParticipantModel.find();
@@ -31,3 +31,13 @@ export const signUpService = async (participant: signUpDto) => {
   const { password, ...withoutPassword } = participantDB;
   return withoutPassword;
 };
+
+
+export const signInService = async (nick: string, password: string) => {
+  const participant = await ParticipantModel.findOneBy({ nick });
+  if (!participant) throw new Error('Credenciales incorrectas');
+  const validPassword = await comparePassword(password, participant.password);
+  if (!validPassword) throw new Error('Credenciales incorrectas');
+    const { password: _, ...withoutPassword } = participant;
+    return withoutPassword;
+}
