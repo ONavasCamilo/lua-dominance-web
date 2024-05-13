@@ -6,15 +6,16 @@ import {
   signUp,
 } from "../controllers/participant.controller";
 import { signUpMiddleware } from "../middlewares/signUp.middleware";
+import { verifyToken } from "../middlewares/verifyToken.middleware";
 
 const participantRouter = Router();
 
-participantRouter.get("/", getParticipants);
+participantRouter.get("/", verifyToken, getParticipants);
 
 participantRouter.get("/:id", getParticipantById);
 
 participantRouter.post("/signup", signUpMiddleware, signUp);
 
-participantRouter.post("/signin", signIn)
+participantRouter.post("/signin", signIn);
 
 export default participantRouter;
