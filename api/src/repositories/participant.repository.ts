@@ -11,23 +11,23 @@ const ParticipantModel = AppDataSource.getRepository(Participant).extend({
     return withoutPassword;
   },
 
-  async getParticipantByDiscordModel(discord: string) {
-    const participant = await ParticipantModel.findOneBy({ discord });
-    if (!participant) {
-      throw new Error(`No existe participante con discord: ${discord}`);
-    }
-    const { password, ...withoutPassword } = participant;
-    return withoutPassword;
-  },
+  // async getParticipantByDiscordModel(discord: string) {
+  //   const participant = await ParticipantModel.findOneBy({ discord });
+  //   if (!participant) {
+  //     throw new Error(`No existe participante con discord: ${discord}`);
+  //   }
+  //   const { password, ...withoutPassword } = participant;
+  //   return withoutPassword;
+  // },
 
-  async getParticipantByNickModel(nick: string) {
-    const participant = await ParticipantModel.findOneBy({ nick });
-    if (!participant) {
-      throw new Error(`No existe participante con nick: ${nick}`);
-    }
-    const { password, ...withoutPassword } = participant;
-    return withoutPassword;
-  },
+  // async getParticipantByNickModel(nick: string) {
+  //   const participant = await ParticipantModel.findOneBy({ nick });
+  //   if (!participant) {
+  //     throw new Error(`No existe participante con nick: ${nick}`);
+  //   }
+  //   const { password, ...withoutPassword } = participant;
+  //   return withoutPassword;
+  // },
 });
 
 export default ParticipantModel;

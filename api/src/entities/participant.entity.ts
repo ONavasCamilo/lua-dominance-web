@@ -16,7 +16,7 @@ export class Participant {
   @Column({
     type: 'varchar',
     length: 30,
-    default: null,
+    default: undefined,
     nullable: true,
   })
   discord?: string | null;
