@@ -1,5 +1,6 @@
 import { signUpDto } from "../dto/participant.dto";
 import ParticipantModel from "../repositories/participant.repository";
+import { hashPassword } from "../utils/passwordManager";
 
 export const getParticipantsService = async () => {
   const participants = await ParticipantModel.find();
@@ -21,10 +22,12 @@ export const signUpService = async (participant: signUpDto) => {
       const existDiscord = await ParticipantModel.findOneBy({ discord });
       if (existDiscord) throw new Error("Discord existente, ingresa otro");
   }
-  const newParticipant = await ParticipantModel.save(participant);
+  const hashedPassword = await hashPassword(participant.password)
+  const newParticipant = await ParticipantModel.save({ ...participant, password: hashedPassword });
   const participantDB = await ParticipantModel.findOneBy({
     id: newParticipant.id,
   });
   if (!participantDB) throw new Error('Error creando el usuario')
-  return participantDB;
+  const { password, ...withoutPassword } = participantDB;
+  return withoutPassword;
 };

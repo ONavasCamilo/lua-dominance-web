@@ -1,9 +1,11 @@
+import jwt from "jsonwebtoken";
 import { Request, Response } from "express";
 import {
   getParticipantByIdService,
   getParticipantsService,
   signUpService,
 } from "../services/participant.service";
+import { JWT_SECRET } from "../config/envs";
 
 export const getParticipants = async (req: Request, res: Response) => {
   try {
@@ -31,13 +33,18 @@ export const getParticipantById = async (req: Request, res: Response) => {
 export const signUp = async (req: Request, res: Response) => {
   const { nick, discord, password, confirmpassword } = req.body;
   try {
-    const user = await signUpService({
+    const participant = await signUpService({
       nick,
       discord,
       password,
       confirmpassword,
     });
-    res.status(202).json(user);
+    const token = jwt.sign({ id: participant.id }, JWT_SECRET, {expiresIn: '1h'})
+    res.status(202).json({
+      login: true,
+      token,
+      participant
+    });
   } catch (err) {
     if (err instanceof Error) {
       res.status(400).send({ statusCode: 400, message: err.message });
