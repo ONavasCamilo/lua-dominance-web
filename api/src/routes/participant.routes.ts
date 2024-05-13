@@ -12,6 +12,6 @@ participantRouter.get("/", getParticipants);
 
 participantRouter.get("/:id", getParticipantById);
 
-participantRouter.post("/signup",ParticipantMiddleware, signUp);
+participantRouter.post("/signup", ParticipantMiddleware, signUp);
 
 export default participantRouter;

@@ -29,10 +29,6 @@ export class signUpDto {
   password: string;
 
   @IsNotEmpty()
-  @IsString()
-  @MinLength(8)
-  @MaxLength(80)
-  @Matches(/^(?=.*[a-zA-Z])(?=.*[0-9])/)
   confirmpassword: string;
 
   @IsEmpty()

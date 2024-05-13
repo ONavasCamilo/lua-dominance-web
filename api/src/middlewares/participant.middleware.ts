@@ -1,10 +1,10 @@
 import { NextFunction, Request, Response } from "express";
 import { signUpDto } from "../dto/participant.dto";
-import { validate } from "class-validator";
+import { ValidationError, validate } from "class-validator";
 
 export const ParticipantMiddleware = (req: Request, res: Response, next: NextFunction) => {
     const { nick, discord, password, confirmpassword } = req.body;
-    
+
     const valid = new signUpDto();
     valid.nick = nick;
     valid.discord = discord;
@@ -12,10 +12,26 @@ export const ParticipantMiddleware = (req: Request, res: Response, next: NextFun
     valid.confirmpassword = confirmpassword;
     
     validate(valid).then((err) => {
+        if (valid.password !== valid.confirmpassword) {
+            const newError: ValidationError = {
+                "target": {
+                    nick,
+                    discord,
+                    password,
+                    confirmpassword
+                },
+                value: password,
+                property: 'password',
+                constraints: {
+                    matchPassword: 'La contraseña y la confirmación no coinciden'
+                }
+            }
+            err.push(newError)
+        }
         if (err.length > 0) {
             return res.status(400).json({ error: err })
         } else {
-            next();
+            next(); 
         }
     })
 }
