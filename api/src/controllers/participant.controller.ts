@@ -40,7 +40,7 @@ export const signUp = async (req: Request, res: Response) => {
       password,
       confirmpassword,
     });
-    const token = jwt.sign({ id: participant.id }, JWT_SECRET, {
+    const token = jwt.sign({ id: participant.id, nick: participant.nick, role: participant.role }, JWT_SECRET, {
       expiresIn: "1h",
     });
     res.status(202).json({
@@ -59,7 +59,7 @@ export const signIn = async (req: Request, res: Response) => {
   const { nick, password } = req.body;
   try {
     const participant = await signInService(nick, password);
-    const token = jwt.sign({ id: participant.id }, JWT_SECRET, {
+    const token = jwt.sign({ id: participant.id, nick: participant.nick, role: participant.role }, JWT_SECRET, {
       expiresIn: "1h",
     });
     res.status(202).json({

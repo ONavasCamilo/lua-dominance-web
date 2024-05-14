@@ -1,7 +1,7 @@
 import { AppDataSource } from "../config/typeorm";
 import { Participant } from "../entities/participant.entity";
 import { Role } from "../entities/role.entity";
-import { RoleEnum } from "../enum/role.enum";
+import { RoleEnum } from "../interfaces/role.enum";
 
 const RoleModel = AppDataSource.getRepository(Role).extend({
   async asignRole(participant: Participant) {
