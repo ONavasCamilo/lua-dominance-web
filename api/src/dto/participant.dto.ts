@@ -30,7 +30,4 @@ export class signUpDto {
 
   @IsNotEmpty()
   confirmpassword: string;
-
-  @IsEmpty()
-  IsAdmin?: boolean;
 }

@@ -9,6 +9,7 @@ import {
   RESTART_SCHEMA,
 } from "./envs";
 import { Participant } from "../entities/participant.entity";
+import { Role } from "../entities/role.entity";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
@@ -19,7 +20,7 @@ export const AppDataSource = new DataSource({
   database: DB_NAME,
   synchronize: true,
   logging: false,
-  entities: [Participant],
+  entities: [Participant, Role],
   subscribers: [],
   migrations: [],
   dropSchema: RESTART_SCHEMA,
