@@ -11,6 +11,6 @@ export interface Payload extends JwtPayload {
     nick: string;
     role: {
         id: string;
-        role: RoleEnum;
+        role: string;
     }
 }
