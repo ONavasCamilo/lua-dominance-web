@@ -1,9 +1,9 @@
-import { Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 import { Role } from './role.entity';
 
 @Entity({ name: 'participants' })
-export class Participant {
+export class Participant extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string = uuid();
 

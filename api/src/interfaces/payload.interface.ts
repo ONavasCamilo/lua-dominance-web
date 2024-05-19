@@ -1,5 +1,4 @@
 import { Request } from 'express';
-import { RoleEnum } from "./role.enum";
 import { JwtPayload } from 'jsonwebtoken';
 
 

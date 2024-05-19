@@ -8,16 +8,23 @@ export const isAdmin = async (
   next: NextFunction
 ) => {
   if (!req.session) {
-    res.status(400).json({ statusCode: 400, message: "Sesión sin encontrar" });
+    return res
+      .status(400)
+      .json({ statusCode: 404, message: "Sesión sin encontrar" });
+  }
+  if (!req.session.role) {
+    return res
+      .status(400)
+      .json({ statusCode: 400, message: "Rol de la sesión no encontrado" });
   }
   try {
     const adminRol = await RoleModel.findOneBy({ role: "admin" });
     if (!adminRol) {
-        res.status(400).json({ statusCode: 400, message: "Error server" });
+      return res.status(400).json({ statusCode: 500, message: "Error server" });
     }
-    if (adminRol?.id === req.session?.role.id) return next();
-    res.status(400).json({ statusCode: 400, message: "Unauthorized" });
+    if (adminRol.id === req.session.role.id) return next();
+    return res.status(400).json({ statusCode: 401, message: "Unauthorized" });
   } catch (err) {
-    res.status(400).json({ statusCode: 400, message: `${err} error` });
+    return res.status(400).json({ statusCode: 500, message: `${err} error` });
   }
 };

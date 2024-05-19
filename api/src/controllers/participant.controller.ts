@@ -43,14 +43,14 @@ export const signUp = async (req: Request, res: Response) => {
     const token = jwt.sign({ id: participant.id, nick: participant.nick, role: participant.role }, JWT_SECRET, {
       expiresIn: "1h",
     });
-    res.status(202).json({
+    return res.status(202).json({
       login: true,
       token,
       participant,
     });
   } catch (err) {
     if (err instanceof Error) {
-      res.status(400).json({ statusCode: 400, message: err.message });
+      return res.status(400).json({ statusCode: 400, message: err.message });
     }
   }
 };

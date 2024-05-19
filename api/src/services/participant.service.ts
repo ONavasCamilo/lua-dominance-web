@@ -27,12 +27,8 @@ export const signUpService = async (participant: signUpDto) => {
   const newParticipant = ParticipantModel.create({ ...participant, password: hashedPassword });
   await RoleModel.asignRole(newParticipant)
   await ParticipantModel.save(newParticipant)
-  const participantDB = await ParticipantModel.findOneBy({
-    id: newParticipant.id,
-  });
-  if (!participantDB) throw new Error('Error creando el usuario')
-  const { password, ...withoutPassword } = participantDB;
-  return withoutPassword;
+  const { password, ...withoutPassword } = newParticipant;
+  return withoutPassword
 };
 
 
