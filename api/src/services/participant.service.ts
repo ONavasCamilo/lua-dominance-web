@@ -54,6 +54,15 @@ export const updateDiscordParticipantService = async (
   if (!participant) throw new Error("No existe usuario con ese id");
   participant.discord = discord;
   await ParticipantModel.save(participant);
-  const updatedDiscord = await ParticipantModel.findOneBy({ id });
-  return updatedDiscord;
-};
+  const { password, ...withoutPassword } = participant;
+  return withoutPassword;
+}
+
+export const updatePasswordParticipantService = async (id: string, password: string) => {
+  const participant = await ParticipantModel.findOneBy({ id });
+  if (!participant) throw new Error("No existe usuario con ese id");
+  const hashedPassword = await hashPassword(password);
+  participant.password = hashedPassword;
+  await ParticipantModel.save(participant)
+  return 'Cambio de contraseña exitoso'
+}

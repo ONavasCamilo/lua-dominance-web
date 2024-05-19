@@ -6,8 +6,10 @@ import {
   signInService,
   signUpService,
   updateDiscordParticipantService,
+  updatePasswordParticipantService,
 } from "../services/participant.service";
 import { JWT_SECRET } from "../config/envs";
+import validateDiscord from "../utils/validateDiscord.validation";
 
 export const getParticipants = async (req: Request, res: Response) => {
   try {
@@ -87,8 +89,28 @@ export const updateDiscordParticipant = async (req: Request, res: Response) => {
   const { id } = req.params;
   const { discord } = req.body;
   try {
+    validateDiscord(discord);
     const updatedDiscord = await updateDiscordParticipantService(id, discord);
-    return res.status(202).json({ updatedDiscord })
+    return res.status(202).json(updatedDiscord);
+  } catch (err) {
+    if (err instanceof Error) {
+      res.status(400).json({ statusCode: 400, message: err.message });
+    }
+  }
+};
+
+export const updatePasswordParticipant = async (
+  req: Request,
+  res: Response
+) => {
+  const { id } = req.params;
+  const { password } = req.body;
+  try {
+    const msgUpdatedPassword = await updatePasswordParticipantService(
+      id,
+      password
+    );
+    return res.status(202).json({ msgUpdatedPassword });
   } catch (err) {
     if (err instanceof Error) {
       res.status(400).json({ statusCode: 400, message: err.message });

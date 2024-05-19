@@ -6,9 +6,10 @@ import {
   signIn,
   signUp,
   updateDiscordParticipant,
+  updatePasswordParticipant,
 } from "../controllers/participant.controller";
-import { signUpMiddleware } from "../middlewares/signUp.middleware";
 import { isAdmin } from "../middlewares/isAdmin.middleware";
+import signUpMiddleware from "../middlewares/signUp.middleware";
 
 const participantRouter = Router();
 
@@ -16,10 +17,20 @@ participantRouter.get("/", [verifyToken, isAdmin], getParticipants);
 
 participantRouter.get("/:id", verifyToken, getParticipantById);
 
-participantRouter.post("/signup", signUpMiddleware , signUp);
+participantRouter.post("/signup", signUpMiddleware, signUp);
 
 participantRouter.post("/signin", signIn);
 
-participantRouter.put("/update/discord/:id", verifyToken, updateDiscordParticipant)
+participantRouter.put(
+  "/update/discord/:id",
+  verifyToken,
+  updateDiscordParticipant
+);
+
+participantRouter.put(
+  "/update/password/:id",
+  [verifyToken],
+  updatePasswordParticipant
+);
 
 export default participantRouter;
