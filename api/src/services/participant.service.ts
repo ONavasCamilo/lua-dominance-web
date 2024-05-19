@@ -20,23 +20,28 @@ export const signUpService = async (participant: signUpDto) => {
   const existNick = await ParticipantModel.findOneBy({ nick });
   if (existNick) throw new Error("Nick existente, ingresa otro");
   if (participant.discord) {
-      const existDiscord = await ParticipantModel.findOneBy({ discord });
-      if (existDiscord) throw new Error("Discord existente, ingresa otro");
+    const existDiscord = await ParticipantModel.findOneBy({ discord });
+    if (existDiscord) throw new Error("Discord existente, ingresa otro");
   }
-  const hashedPassword = await hashPassword(participant.password)
-  const newParticipant = ParticipantModel.create({ ...participant, password: hashedPassword });
-  await RoleModel.asignRole(newParticipant)
-  await ParticipantModel.save(newParticipant)
+  const hashedPassword = await hashPassword(participant.password);
+  const newParticipant = ParticipantModel.create({
+    ...participant,
+    password: hashedPassword,
+  });
+  await RoleModel.asignRole(newParticipant);
+  await ParticipantModel.save(newParticipant);
   const { password, ...withoutPassword } = newParticipant;
-  return withoutPassword
+  return withoutPassword;
 };
 
-
 export const signInService = async (nick: string, password: string) => {
-  const participant = await ParticipantModel.findOneBy({ nick });
-  if (!participant) throw new Error('Credenciales incorrectas');
+  const participant = await ParticipantModel.findOne({
+    where: { nick },
+    relations: ["role"],
+  });
+  if (!participant) throw new Error("Credenciales incorrectas");
   const validPassword = await comparePassword(password, participant.password);
-  if (!validPassword) throw new Error('Credenciales incorrectas');
-    const { password: _, ...withoutPassword } = participant;
-    return withoutPassword;
-}
+  if (!validPassword) throw new Error("Credenciales incorrectas");
+  const { password: _, ...withoutPassword } = participant;
+  return withoutPassword;
+};

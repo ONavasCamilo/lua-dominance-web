@@ -13,9 +13,9 @@ const participantRouter = Router();
 
 participantRouter.get("/", [verifyToken, isAdmin], getParticipants);
 
-participantRouter.get("/:id", getParticipantById);
+participantRouter.get("/:id", verifyToken, getParticipantById);
 
-participantRouter.post("/signup", signUpMiddleware ,signUp);
+participantRouter.post("/signup", signUpMiddleware , signUp);
 
 participantRouter.post("/signin", signIn);
 
