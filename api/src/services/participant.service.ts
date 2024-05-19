@@ -45,3 +45,15 @@ export const signInService = async (nick: string, password: string) => {
   const { password: _, ...withoutPassword } = participant;
   return withoutPassword;
 };
+
+export const updateDiscordParticipantService = async (
+  id: string,
+  discord: string
+) => {
+  const participant = await ParticipantModel.findOneBy({ id });
+  if (!participant) throw new Error("No existe usuario con ese id");
+  participant.discord = discord;
+  await ParticipantModel.save(participant);
+  const updatedDiscord = await ParticipantModel.findOneBy({ id });
+  return updatedDiscord;
+};
