@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { SessionRequest } from "../interfaces/payload.interface";
 import RoleModel from "../repositories/role.repository";
+import { RoleEnum } from "../interfaces/role.enum";
 
 export const isAdmin = async (
   req: SessionRequest,
@@ -18,7 +19,7 @@ export const isAdmin = async (
       .json({ statusCode: 400, message: "Rol de la sesión no encontrado" });
   }
   try {
-    const adminRol = await RoleModel.findOneBy({ role: "admin" });
+    const adminRol = await RoleModel.findOneBy({ role: RoleEnum.ADMIN });
     if (!adminRol) {
       return res.status(400).json({ statusCode: 500, message: "Error server" });
     }
