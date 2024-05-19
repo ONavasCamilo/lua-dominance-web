@@ -91,7 +91,10 @@ export const updateDiscordParticipant = async (req: Request, res: Response) => {
   try {
     validateDiscord(discord);
     const updatedDiscord = await updateDiscordParticipantService(id, discord);
-    return res.status(202).json(updatedDiscord);
+    return res.status(202).json({
+      status: "Discord modificado correctamente",
+      participant: updatedDiscord,
+    });
   } catch (err) {
     if (err instanceof Error) {
       res.status(400).json({ statusCode: 400, message: err.message });
@@ -110,7 +113,10 @@ export const updatePasswordParticipant = async (
       id,
       password
     );
-    return res.status(202).json({ msgUpdatedPassword });
+    return res.status(202).json({
+      status: "Contraseña modificada correctamente",
+      participant: msgUpdatedPassword,
+    });
   } catch (err) {
     if (err instanceof Error) {
       res.status(400).json({ statusCode: 400, message: err.message });

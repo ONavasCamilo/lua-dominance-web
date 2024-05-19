@@ -52,17 +52,24 @@ export const updateDiscordParticipantService = async (
 ) => {
   const participant = await ParticipantModel.findOneBy({ id });
   if (!participant) throw new Error("No existe usuario con ese id");
+  if (participant.discord === discord) throw new Error("El discord debe ser diferente al actual")
   participant.discord = discord;
   await ParticipantModel.save(participant);
   const { password, ...withoutPassword } = participant;
   return withoutPassword;
-}
+};
 
-export const updatePasswordParticipantService = async (id: string, password: string) => {
+export const updatePasswordParticipantService = async (
+  id: string,
+  password: string
+) => {
   const participant = await ParticipantModel.findOneBy({ id });
   if (!participant) throw new Error("No existe usuario con ese id");
+  const samePassword = await comparePassword(password, participant.password)
+  if (samePassword) throw new Error("La contraseña debe ser diferente a la actual")
   const hashedPassword = await hashPassword(password);
   participant.password = hashedPassword;
-  await ParticipantModel.save(participant)
-  return 'Cambio de contraseña exitoso'
-}
+  await ParticipantModel.save(participant);
+  const { password: _, ...withoutPassword } = participant;
+  return withoutPassword;
+};
