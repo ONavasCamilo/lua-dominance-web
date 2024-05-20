@@ -10,6 +10,7 @@ import {
 } from "../controllers/participant.controller";
 import { isAdmin } from "../middlewares/isAdmin.middleware";
 import signUpMiddleware from "../middlewares/signUp.middleware";
+import updatePasswordMiddleware from "../middlewares/updatePassword.middleware";
 
 const participantRouter = Router();
 
@@ -29,7 +30,7 @@ participantRouter.put(
 
 participantRouter.put(
   "/update/password/:id",
-  [verifyToken],
+  [verifyToken, updatePasswordMiddleware],
   updatePasswordParticipant
 );
 

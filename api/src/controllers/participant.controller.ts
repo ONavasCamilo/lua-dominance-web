@@ -90,10 +90,10 @@ export const updateDiscordParticipant = async (req: Request, res: Response) => {
   const { discord } = req.body;
   try {
     validateDiscord(discord);
-    const updatedDiscord = await updateDiscordParticipantService(id, discord);
+    const participant = await updateDiscordParticipantService(id, discord);
     return res.status(202).json({
       status: "Discord modificado correctamente",
-      participant: updatedDiscord,
+      participant,
     });
   } catch (err) {
     if (err instanceof Error) {
@@ -107,15 +107,20 @@ export const updatePasswordParticipant = async (
   res: Response
 ) => {
   const { id } = req.params;
-  const { password } = req.body;
+  const { password, confirmpassword } = req.body;
   try {
-    const msgUpdatedPassword = await updatePasswordParticipantService(
+    if (password !== confirmpassword) throw new Error("Password y confirmpassword deben ser identicas")
+    const objUpdatePw = {
+      password,
+      confirmpassword
+    }
+    const participant = await updatePasswordParticipantService(
       id,
-      password
+      objUpdatePw
     );
     return res.status(202).json({
       status: "Contraseña modificada correctamente",
-      participant: msgUpdatedPassword,
+      participant,
     });
   } catch (err) {
     if (err instanceof Error) {

@@ -1,4 +1,4 @@
-import { signUpDto } from "../dto/participant.dto";
+import { signUpDto, updatePasswordDto } from "../dto/participant.dto";
 import ParticipantModel from "../repositories/participant.repository";
 import RoleModel from "../repositories/role.repository";
 import { comparePassword, hashPassword } from "../utils/passwordManager";
@@ -61,7 +61,7 @@ export const updateDiscordParticipantService = async (
 
 export const updatePasswordParticipantService = async (
   id: string,
-  password: string
+  { password }: updatePasswordDto
 ) => {
   const participant = await ParticipantModel.findOneBy({ id });
   if (!participant) throw new Error("No existe usuario con ese id");
