@@ -14,7 +14,7 @@ import updatePasswordMiddleware from "../middlewares/updatePassword.middleware";
 
 const participantRouter = Router();
 
-participantRouter.get("/", [verifyToken, isAdmin], getParticipants);
+participantRouter.get("/", getParticipants);
 
 participantRouter.get("/:id", verifyToken, getParticipantById);
 

@@ -1,0 +1,1 @@
+export const VITE_GET_PARTICIPANTS = import.meta.env.VITE_GET_PARTICIPANTS;
