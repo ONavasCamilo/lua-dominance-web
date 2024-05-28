@@ -109,15 +109,13 @@ export const updatePasswordParticipant = async (
   const { id } = req.params;
   const { password, confirmpassword } = req.body;
   try {
-    if (password !== confirmpassword) throw new Error("Password y confirmpassword deben ser identicas")
+    if (password !== confirmpassword)
+      throw new Error("Password y confirmpassword deben ser identicas");
     const objUpdatePw = {
       password,
-      confirmpassword
-    }
-    const participant = await updatePasswordParticipantService(
-      id,
-      objUpdatePw
-    );
+      confirmpassword,
+    };
+    const participant = await updatePasswordParticipantService(id, objUpdatePw);
     return res.status(202).json({
       status: "Contraseña modificada correctamente",
       participant,

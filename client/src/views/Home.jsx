@@ -1,13 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { VITE_GET_PARTICIPANTS } from "../config/env.config";
 import axios from "axios";
+import Participants from "../components/viewHome/Participants";
 
 const Home = () => {
+  const [participants, setParticipants] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios(VITE_GET_PARTICIPANTS);
-        console.log(response);
+        setParticipants(response.data);
       } catch (err) {
         console.log("Error obteniendo los datos", err);
       }
@@ -17,7 +19,14 @@ const Home = () => {
 
   return (
     <main>
-      <h1>Participantes:</h1>
+      {participants.map((participant) => (
+        <Participants 
+        key={participant.id}
+        id={participant.id}
+        nick={participant.nick}
+        discord={participant.discord}
+        />
+      ))}
     </main>
   );
 };
