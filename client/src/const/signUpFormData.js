@@ -8,6 +8,7 @@ const signUpFormData = [
     label: "Discord",
     type: "text",
     name: "discord",
+    placeholder: "opcional",
   },
   {
     label: "password",

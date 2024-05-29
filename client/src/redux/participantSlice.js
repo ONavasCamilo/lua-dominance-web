@@ -1,15 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-    participants: [],
+    participant: {},
 }
 
 export const ParticipantSlice = createSlice({
-    name: "participants",
+    name: "participant",
     initialState,
     reducers: {
         setParticipant: (state, action) => {
-            state.participants = action.payload;
+            state.participant = action.payload;
         }
     }
 })
