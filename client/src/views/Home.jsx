@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { VITE_GET_PARTICIPANTS } from "../config/env.config";
 import axios from "axios";
-import Participants from "../components/Participants";
+import Participants from "../components/home/Participants";
 import SignUp from "../components/register/SignUp";
 
 const Home = () => {
@@ -12,7 +12,7 @@ const Home = () => {
         const response = await axios(VITE_GET_PARTICIPANTS);
         setParticipants(response.data);
       } catch (err) {
-        console.log("Error obteniendo los datos", err);
+        console.log("Error obteniendo los datos", err.message);
       }
     };
     fetchData();

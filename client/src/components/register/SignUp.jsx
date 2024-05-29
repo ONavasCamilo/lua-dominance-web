@@ -5,6 +5,7 @@ import axios from 'axios'
 import { VITE_POST_PARTICIPANTS_SIGN_UP } from "../../config/env.config.js";
 import { useDispatch } from "react-redux";
 import { setParticipant } from "../../redux/participantSlice.js";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const initialState = {
@@ -15,6 +16,7 @@ const SignUp = () => {
   };
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [participantSignUp, setParticipantSignUp] = useState(initialState);
 
@@ -26,6 +28,7 @@ const SignUp = () => {
     .then((data) => {
       dispatch(setParticipant(data.participant))
       setParticipantSignUp(initialState)
+      navigate('/profile')
     })
     .catch((err) => {
       console.log('Error:', err)
