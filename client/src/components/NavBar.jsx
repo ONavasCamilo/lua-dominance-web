@@ -1,12 +1,16 @@
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
+    const participant = useSelector((state) => state.participant)
     return (
         <nav>
             <ul>
                 <NavLink to="/">Home</NavLink>
                 <NavLink to="/profile">Profile</NavLink>
-                <NavLink to="/signin">SignIn</NavLink>
+                {!participant.nick && (
+                    <NavLink to="/signin">SignIn</NavLink>
+                )}
             </ul>
         </nav>
     )
