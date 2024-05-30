@@ -1,9 +1,9 @@
-const InputSignUp = ({ name, label, type, placeholder, participantSignUp, setParticipantSignUp }) => {
+const InputLabel = ({ name, label, type, placeholder, participant, setParticipant }) => {
 
   const handleOnChange = e => {
     const { name, value } = e.target
-    setParticipantSignUp({
-        ...participantSignUp,
+    setParticipant({
+        ...participant,
         [name]: value
     })
   };
@@ -16,4 +16,4 @@ const InputSignUp = ({ name, label, type, placeholder, participantSignUp, setPar
   );
 };
 
-export default InputSignUp;
+export default InputLabel;

@@ -4,8 +4,9 @@ const NavBar = () => {
     return (
         <nav>
             <ul>
-                <NavLink to="/home">Inicio</NavLink>
-                <NavLink to="/profile">Perfil</NavLink>
+                <NavLink to="/">Home</NavLink>
+                <NavLink to="/profile">Profile</NavLink>
+                <NavLink to="/signin">SignIn</NavLink>
             </ul>
         </nav>
     )
