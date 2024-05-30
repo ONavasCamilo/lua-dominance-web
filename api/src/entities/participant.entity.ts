@@ -20,7 +20,7 @@ export class Participant extends BaseEntity {
     default: undefined,
     nullable: true,
   })
-  discord?: string | null;
+  discord?: string | undefined;
 
   @Column({
     type: 'varchar',

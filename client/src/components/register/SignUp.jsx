@@ -15,6 +15,14 @@ const SignUp = () => {
     confirmpassword: "",
   };
 
+  const checkDiscord = (obj) => {
+    if (obj.discord.length === 0) {
+      const { discord, ...participant } = obj;
+      return participant;
+    }
+    return obj;
+  };
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -22,8 +30,9 @@ const SignUp = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
+    const participantVerify = checkDiscord(participantSignUp);
     axios
-      .post(VITE_POST_PARTICIPANTS_SIGN_UP, participantSignUp)
+      .post(VITE_POST_PARTICIPANTS_SIGN_UP, participantVerify)
       .then(({ data }) => data)
       .then((data) => {
         dispatch(setParticipant(data.participant));

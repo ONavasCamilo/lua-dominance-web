@@ -24,6 +24,7 @@ const SignIn = () => {
       .then(({ data }) => data)
       .then((data) => {
         dispatch(setParticipant(data.participant))
+        setParticipantSignIn(initialState)
         navigate('/profile')
       });
   };

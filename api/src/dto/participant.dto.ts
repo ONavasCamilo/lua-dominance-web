@@ -1,5 +1,4 @@
 import {
-  IsEmpty,
   IsNotEmpty,
   IsOptional,
   IsString,
@@ -16,7 +15,6 @@ export class signUpDto {
   nick: string;
 
   @IsOptional()
-  @IsString()
   @MinLength(3)
   @MaxLength(15)
   discord?: string;
