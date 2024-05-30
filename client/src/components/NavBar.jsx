@@ -1,12 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { setParticipantLogOut } from "../redux/participantSlice";
 
 const NavBar = () => {
   const login = useSelector((state) => state.login);
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const onClickLogOut = () => {
     dispatch(setParticipantLogOut({}));
+    window.localStorage.removeItem("participant");
+    navigate("/");
   };
   return (
     <nav>

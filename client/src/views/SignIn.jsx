@@ -24,6 +24,7 @@ const SignIn = () => {
       .then(({ data }) => data)
       .then((data) => {
         dispatch(setParticipant(data))
+        window.localStorage.setItem("participant", JSON.stringify(data))
         setParticipantSignIn(initialState)
         navigate('/profile')
       });

@@ -35,6 +35,7 @@ const SignUp = () => {
       .then(({ data }) => data)
       .then((data) => {
         dispatch(setParticipant(data));
+        window.localStorage.setItem("participant", JSON.stringify(data));
         setParticipantSignUp(initialState);
         navigate("/profile");
       })
