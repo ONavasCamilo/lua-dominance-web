@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { VITE_GET_PARTICIPANTS } from "../config/env.config";
 import axios from "axios";
-import Participants from "../components/home/Participants";
-import SignUp from "../components/register/SignUp";
+import Participants from "../components/Participants";
 
 const Home = () => {
   const [participants, setParticipants] = useState([]);
@@ -28,7 +27,6 @@ const Home = () => {
           discord={participant.discord}
         />
       ))}
-      <SignUp />
     </main>
   );
 };

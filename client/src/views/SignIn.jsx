@@ -23,7 +23,7 @@ const SignIn = () => {
       .post(VITE_POST_PARTICIPANTS_SIGN_IN, participantSignIn)
       .then(({ data }) => data)
       .then((data) => {
-        dispatch(setParticipant(data.participant))
+        dispatch(setParticipant(data))
         setParticipantSignIn(initialState)
         navigate('/profile')
       });

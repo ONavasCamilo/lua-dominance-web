@@ -1,10 +1,10 @@
 import { useState } from "react";
-import signUpFormData from "../../const/signUpFormData.js";
-import InputLabel from "../InputLabel.jsx";
+import signUpFormData from "../const/signUpFormData.js";
+import InputLabel from "../components/InputLabel.jsx";
 import axios from "axios";
-import { VITE_POST_PARTICIPANTS_SIGN_UP } from "../../config/env.config.js";
+import { VITE_POST_PARTICIPANTS_SIGN_UP } from "../config/env.config.js";
 import { useDispatch } from "react-redux";
-import { setParticipant } from "../../redux/participantSlice.js";
+import { setParticipant } from "../redux/participantSlice.js";
 import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
@@ -17,8 +17,7 @@ const SignUp = () => {
 
   const checkDiscord = (obj) => {
     if (obj.discord.length === 0) {
-      const { discord, ...participant } = obj;
-      return participant;
+      obj.discord = null;
     }
     return obj;
   };
@@ -35,7 +34,7 @@ const SignUp = () => {
       .post(VITE_POST_PARTICIPANTS_SIGN_UP, participantVerify)
       .then(({ data }) => data)
       .then((data) => {
-        dispatch(setParticipant(data.participant));
+        dispatch(setParticipant(data));
         setParticipantSignUp(initialState);
         navigate("/profile");
       })
