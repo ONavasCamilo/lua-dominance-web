@@ -20,11 +20,10 @@ html {
 
 body {
   margin: 0;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   background: url("backgroundBlue.jpg");
   background-size: cover;
-  /* height: 100vh; */
+  height: 100vh;  
 }
 
 ul {

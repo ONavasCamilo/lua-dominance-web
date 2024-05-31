@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./views/Home";
 import ProfileParticipant from "./views/ProfileParticipant";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/navbar/NavBar";
 import SignIn from "./views/SignIn";
 import SignUp from "./views/SignUp";
 import { useDispatch, useSelector } from "react-redux";
