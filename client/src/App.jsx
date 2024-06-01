@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import Home from "./views/Home";
+import Home from "./views/home/Home";
 import ProfileParticipant from "./views/ProfileParticipant";
 import NavBar from "./components/navbar/NavBar";
 import SignIn from "./views/SignIn";

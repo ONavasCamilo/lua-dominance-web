@@ -12,7 +12,8 @@
     display: flex;
     justify-content: space-evenly;
     padding: 0;
-    font-weight: 1000;
+    font-weight: 600;
+    font-size: 14px;
 }
 
 .navbar ul * {

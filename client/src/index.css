@@ -18,9 +18,15 @@ html {
  * Remove the margin in all browsers.
  */
 
+ @font-face {
+  font-family: MiFuentePersonalizada;
+  src: url("CuteLove.ttf") format('truetype');
+}
+
 body {
   margin: 0;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
+  font-family: MiFuentePersonalizada;
   background: url("backgroundBlue.jpg");
   background-size: cover;
   height: 100vh;  
