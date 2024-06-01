@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { setParticipant, setParticipantLogOut } from "./redux/participantSlice";
 
 const App = () => {
+  
   const login = useSelector((state) => state.login);
   const dispatch = useDispatch();
 
@@ -21,7 +22,6 @@ const App = () => {
       return dispatch(setParticipant(participantDataParse));
     }
   
-
   useEffect(() => {
     if (!login) { 
       getLocalStorage()

@@ -1,6 +1,6 @@
 import style from "./Participants.module.css"
 
-const Participants = ({ nick, discord }) => {
+const Participants = ({ nick }) => {
 
   return (
     <div className={style.cont_participant}>
