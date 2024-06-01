@@ -17,11 +17,11 @@ const NavBar = () => {
   return (
     <nav className={style.navbar}>
       <ul>
-        <NavLink to="/">Home</NavLink>
-        {login && <NavLink to="/profile">Profile</NavLink>}
-        {!login && <NavLink to="/signin">SignIn</NavLink>}
-        {!login && <NavLink to="/signup">SignUp</NavLink>}
-        {login && <button onClick={onClickLogOut}>logout</button>}
+        <NavLink to="/">Inicio</NavLink>
+        {login && <NavLink to="/profile">Perfil</NavLink>}
+        {!login && <NavLink to="/signin">Iniciar sesión</NavLink>}
+        {!login && <NavLink to="/signup">Registrarse</NavLink>}
+        {login && <button onClick={onClickLogOut}>Cerrar sesión</button>}
       </ul>
     </nav>
   );
