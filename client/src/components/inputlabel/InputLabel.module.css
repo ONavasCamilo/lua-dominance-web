@@ -1,0 +1,17 @@
+.cont_inputlabel {
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.3rem;
+  color: #fafafa;
+}
+
+.input {
+  background: rgba(1, 41, 93, 0.7);
+  border: 2px solid rgba(6, 27, 55, 0.7);
+  outline: none;
+  border-radius: 8px;
+  margin: 5px;
+  padding: 6px;
+}

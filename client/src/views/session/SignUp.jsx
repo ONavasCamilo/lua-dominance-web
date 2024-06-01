@@ -1,11 +1,12 @@
 import { useState } from "react";
-import signUpFormData from "../const/signUpFormData.js";
-import InputLabel from "../components/InputLabel.jsx";
+import signUpFormData from "../../const/signUpFormData.js";
+import InputLabel from "../../components/inputlabel/InputLabel.jsx";
 import axios from "axios";
-import { VITE_POST_PARTICIPANTS_SIGN_UP } from "../config/env.config.js";
+import { VITE_POST_PARTICIPANTS_SIGN_UP } from "../../config/env.config.js";
 import { useDispatch } from "react-redux";
-import { setParticipant } from "../redux/participantSlice.js";
+import { setParticipant } from "../../redux/participantSlice.js";
 import { useNavigate } from "react-router-dom";
+import style from "./session.module.css"
 
 const SignUp = () => {
   const initialState = {
@@ -45,7 +46,7 @@ const SignUp = () => {
   };
 
   return (
-    <form onSubmit={handleOnSubmit}>
+    <form onSubmit={handleOnSubmit} className={style.form_session}>
       {signUpFormData.map(({ label, type, name, placeholder }) => {
         return (
           <InputLabel
@@ -60,7 +61,7 @@ const SignUp = () => {
         );
       })}
       <div>
-        <button>Enviar</button>
+        <button className={style.button_session}>Enviar</button>
       </div>
     </form>
   );

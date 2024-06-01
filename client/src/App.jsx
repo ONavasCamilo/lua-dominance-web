@@ -2,14 +2,14 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./views/home/Home";
 import ProfileParticipant from "./views/ProfileParticipant";
 import NavBar from "./components/navbar/NavBar";
-import SignIn from "./views/SignIn";
-import SignUp from "./views/SignUp";
+import SignIn from "./views/session/SignIn";
+import SignUp from "./views/session/SignUp";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { setParticipant, setParticipantLogOut } from "./redux/participantSlice";
 
 const App = () => {
-  
+
   const login = useSelector((state) => state.login);
   const dispatch = useDispatch();
 
