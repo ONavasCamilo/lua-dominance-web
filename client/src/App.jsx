@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./views/home/Home";
-import ProfileParticipant from "./views/ProfileParticipant";
+import ProfileParticipant from "./views/profileParticipant/ProfileParticipant";
 import NavBar from "./components/navbar/NavBar";
 import SignIn from "./views/session/SignIn";
 import SignUp from "./views/session/SignUp";
