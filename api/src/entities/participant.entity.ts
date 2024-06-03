@@ -24,10 +24,9 @@ export class Participant extends BaseEntity {
   @Column({
     type: "varchar",
     length: 32,
-    default: undefined,
     nullable: true,
   })
-  discord?: string | undefined;
+  discord?: string;
 
   @Column({
     type: "varchar",
@@ -36,6 +35,8 @@ export class Participant extends BaseEntity {
   })
   password: string;
 
-  @ManyToOne(() => Role, (role) => role.participant)
+  @ManyToOne(() => Role, (role) => role.participant, {
+    cascade: true,
+  })
   role: Role;
 }
