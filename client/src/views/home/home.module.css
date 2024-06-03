@@ -1,5 +1,5 @@
 .cont_title {
-  padding-top: 15px;
+  padding: 20px;
   text-align: left;
   text-align: center;
   color: rgb(222, 222, 222);
@@ -28,7 +28,7 @@
 .button_register {
   background: linear-gradient(to left, rgb(255, 100, 100), rgb(255, 200, 0));
   padding: 1rem 3rem;
-  margin-top: 25px;
+  margin: 15px;
   border: none;
   border-radius: 12px;
   color: rgb(240, 240, 240);

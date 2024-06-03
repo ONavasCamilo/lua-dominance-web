@@ -1,30 +1,37 @@
-import { BaseEntity, Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { v4 as uuid } from 'uuid';
-import { Role } from './role.entity';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  ManyToMany,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from "typeorm";
+import { v4 as uuid } from "uuid";
+import { Role } from "./role.entity";
 
-@Entity({ name: 'participants' })
+@Entity({ name: "participants" })
 export class Participant extends BaseEntity {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn("uuid")
   id: string = uuid();
 
   @Column({
-    type: 'varchar',
-    length: 20,
+    type: "varchar",
+    length: 17,
     nullable: false,
   })
-  nick: string;  
+  nick: string;
 
   @Column({
-    type: 'varchar',
-    length: 30,
+    type: "varchar",
+    length: 32,
     default: undefined,
     nullable: true,
   })
   discord?: string | undefined;
 
   @Column({
-    type: 'varchar',
-    length: 60,
+    type: "varchar",
+    length: 80,
     nullable: false,
   })
   password: string;
@@ -32,4 +39,3 @@ export class Participant extends BaseEntity {
   @ManyToOne(() => Role, (role) => role.participant)
   role: Role;
 }
-

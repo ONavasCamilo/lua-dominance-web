@@ -29,7 +29,7 @@ body {
   font-family: MiFuentePersonalizada;
   background: url("backgroundBlue.jpg");
   background-size: cover;
-  height: 100vh;  
+  height: 100vh;
 }
 
 ul {
@@ -48,7 +48,7 @@ main {
  * `article` contexts in Chrome, Firefox, and Safari.
  */
 
-h1 {
+h1, h2 {
   font-size: 2em;
   margin: 0.67em 0;
   margin-block-end: 0em;

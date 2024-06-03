@@ -10,19 +10,19 @@ import {
 export class signUpDto {
   @IsNotEmpty()
   @IsString()
-  @MinLength(5)
-  @MaxLength(15)
+  @MinLength(9)
+  @MaxLength(17)
   nick: string;
 
   @IsOptional()
-  @MinLength(3)
-  @MaxLength(15)
+  @MinLength(2)
+  @MaxLength(32)
   discord?: string;
 
   @IsNotEmpty()
   @IsString()
   @MinLength(8)
-  @MaxLength(80)
+  @MaxLength(20)
   @Matches(/^(?=.*[a-zA-Z])(?=.*[0-9])/)
   password: string;
 
@@ -35,7 +35,7 @@ export class updatePasswordDto {
   @IsNotEmpty()
   @IsString()
   @MinLength(8)
-  @MaxLength(80)
+  @MaxLength(20)
   @Matches(/^(?=.*[a-zA-Z])(?=.*[0-9])/)
   password: string;
 
