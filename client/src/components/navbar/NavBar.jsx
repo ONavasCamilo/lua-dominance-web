@@ -22,6 +22,7 @@ const NavBar = () => {
         {login && <NavLink to="/profile">Perfil</NavLink>}
         {!login && <NavLink to="/signin">Iniciar sesión</NavLink>}
         {!login && <NavLink to="/signup">Registrarse</NavLink>}
+        {login && <NavLink to="/tournament">Torneo</NavLink>}
         {login && <button onClick={onClickLogOut} className={style.logout}>Cerrar sesión <img src={iconLogout} alt="icono logout" /></button>}
       </ul>
     </nav>

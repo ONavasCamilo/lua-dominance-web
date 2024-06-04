@@ -10,7 +10,7 @@ import {
 export class signUpDto {
   @IsNotEmpty()
   @IsString()
-  @MinLength(9)
+  @MinLength(8)
   @MaxLength(17)
   nick: string;
 

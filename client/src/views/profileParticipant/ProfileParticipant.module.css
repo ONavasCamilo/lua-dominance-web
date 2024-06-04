@@ -1,11 +1,11 @@
 .cont_participant {
   margin: 1rem auto;
   padding: 5px;
-  width: 70%;
-  min-height: 230px;
+  width: 80%;
+  min-height: 210px;
   text-align: center;
   color: #fafafa;
-  border: 1px solid #fafafa;
+  border: 3px solid #b6d8da;
   border-radius: 15px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -22,13 +22,54 @@
   grid-column: 2/ 4;
   align-self: center;
   justify-self: left;
-  font-size: 1.8rem;
-  
+  font-size: 1.5em;
 }
 
 .iconConfig_participant {
   grid-column: 4;
   justify-self: right;
-  margin: 5px;
+  margin: 8px;
   width: 25px;
+  color: #b6d8da;
+}
+
+.iconDiscord_participant {
+  align-self: center;
+  justify-self: center;
+}
+
+.discord_participant {
+  align-self: center;
+  justify-self: left;
+  font-size: 1.3rem;
+  grid-column: 2/4;
+}
+
+.iconCheese_participant {
+  grid-row: 3;
+  align-self: center;
+  justify-self: center;
+  width: 30px;
+}
+
+.tournament_participant {
+  grid-row: 3;
+  grid-column: 2/5;
+  align-self: center;
+  justify-self: left;
+  font-size: 1.3rem;
+}
+
+.button_participant {
+  grid-column: 2/4;
+  grid-row: 4;
+  width: 80%;
+  height: 70%;
+  justify-self: center;
+  align-self: center;
+  border: none;
+  border-radius: 12px;
+  color: rgb(240, 240, 240);
+  font-weight: bold;
+  background: linear-gradient(to left, rgb(255, 100, 100), rgb(255, 200, 0));
 }
