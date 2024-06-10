@@ -2,17 +2,17 @@ import {
   BaseEntity,
   Column,
   Entity,
-  ManyToMany,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { v4 as uuid } from "uuid";
 import { Role } from "./role.entity";
+import { Participation } from "./participation.entity";
 
 @Entity({ name: "participants" })
 export class Participant extends BaseEntity {
   @PrimaryGeneratedColumn("uuid")
-  id: string = uuid();
+  id: string
 
   @Column({
     type: "varchar",
@@ -39,4 +39,9 @@ export class Participant extends BaseEntity {
     cascade: true,
   })
   role: Role;
+
+  @OneToMany(() => Participation, (participation) => participation.participant, {
+    cascade: true,
+  })
+  participations: Participation[];
 }
