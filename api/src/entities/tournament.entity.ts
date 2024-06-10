@@ -3,8 +3,8 @@ import { Participation } from "./participation.entity";
 
 @Entity({ name: "tournaments" })
 export class Tournament {
-  @PrimaryGeneratedColumn("uuid")
-  id: string;
+  @PrimaryGeneratedColumn("increment")
+  id: number;
 
   @Column({
     type: "varchar",
@@ -13,14 +13,20 @@ export class Tournament {
   })
   name: string;
 
-  @OneToMany(() => Participation, (participation) => participation.tournament, {
-    cascade: true,
-  })
-  participations: Participation[];
-
   @Column({
     type: "int",
     default: 0,
   })
   participants: number;
+
+  @Column({
+    type: "boolean",
+    default: true,
+  })
+  inProgress: boolean;
+  
+  @OneToMany(() => Participation, (participation) => participation.tournament, {
+    cascade: true,
+  })
+  participations: Participation[];
 }

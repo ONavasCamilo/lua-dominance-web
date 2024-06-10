@@ -8,7 +8,6 @@ import {
   updateDiscordParticipant,
   updatePasswordParticipant,
 } from "../controllers/participant.controller";
-import { isAdmin } from "../middlewares/isAdmin.middleware";
 import signUpMiddleware from "../middlewares/signUp.middleware";
 import updatePasswordMiddleware from "../middlewares/updatePassword.middleware";
 
