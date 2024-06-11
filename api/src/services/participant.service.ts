@@ -4,7 +4,9 @@ import RoleModel from "../repositories/role.repository";
 import { comparePassword, hashPassword } from "../utils/passwordManager";
 
 export const getParticipantsService = async () => {
-  const participants = await ParticipantModel.find();
+  const participants = await ParticipantModel.find({
+    relations: ["participations", "participations.tournament"],
+  });
   return participants.map(
     ({ password, ...withoutPassowrd }) => withoutPassowrd
   );
@@ -52,7 +54,8 @@ export const updateDiscordParticipantService = async (
 ) => {
   const participant = await ParticipantModel.findOneBy({ id });
   if (!participant) throw new Error("No existe usuario con ese id");
-  if (participant.discord === discord) throw new Error("El discord debe ser diferente al actual")
+  if (participant.discord === discord)
+    throw new Error("El discord debe ser diferente al actual");
   participant.discord = discord;
   await ParticipantModel.save(participant);
   const { password, ...withoutPassword } = participant;
@@ -65,8 +68,9 @@ export const updatePasswordParticipantService = async (
 ) => {
   const participant = await ParticipantModel.findOneBy({ id });
   if (!participant) throw new Error("No existe usuario con ese id");
-  const samePassword = await comparePassword(password, participant.password)
-  if (samePassword) throw new Error("La contraseña debe ser diferente a la actual")
+  const samePassword = await comparePassword(password, participant.password);
+  if (samePassword)
+    throw new Error("La contraseña debe ser diferente a la actual");
   const hashedPassword = await hashPassword(password);
   participant.password = hashedPassword;
   await ParticipantModel.save(participant);

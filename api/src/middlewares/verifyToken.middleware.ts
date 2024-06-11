@@ -3,7 +3,6 @@ import { JWT_SECRET } from "./../config/envs";
 import { NextFunction, Response } from "express";
 import jwt from "jsonwebtoken";
 import { SessionRequest } from "../interfaces/payload.interface";
-import RoleModel from "../repositories/role.repository";
 
 export const verifyToken = (
   req: SessionRequest,

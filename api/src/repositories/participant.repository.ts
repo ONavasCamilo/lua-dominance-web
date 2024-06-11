@@ -3,7 +3,10 @@ import { Participant } from "../entities/participant.entity";
 
 const ParticipantModel = AppDataSource.getRepository(Participant).extend({
   async getParticipantByIdModel(id: string) {
-    const participant = await ParticipantModel.findOneBy({ id });
+    const participant = await ParticipantModel.findOne({
+      where: { id },
+      relations: ["participations", "participations.tournament"]
+    });
     if (!participant) {
       throw new Error(`No existe participante con id: ${id}`);
     }
