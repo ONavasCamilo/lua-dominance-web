@@ -1,0 +1,11 @@
+.cont_tournament {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fafafa;
+}
+
+.h2_tournament {
+  font-size: 38px;
+}
+

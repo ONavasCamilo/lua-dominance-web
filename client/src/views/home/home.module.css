@@ -25,16 +25,6 @@
   margin-right: 5px;
 }
 
-.button_register {
-  background: linear-gradient(to left, rgb(255, 100, 100), rgb(255, 200, 0));
-  padding: 1rem 3rem;
-  margin: 15px;
-  border: none;
-  border-radius: 12px;
-  color: rgb(240, 240, 240);
-  font-weight: bold;
-}
-
 .subtitle_participants {
   color: rgb(222, 222, 222);
   margin: 1.5rem 15px;

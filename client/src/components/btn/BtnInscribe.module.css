@@ -1,0 +1,9 @@
+.btn_inscribe_tournament {
+    background: linear-gradient(to left, rgb(255, 100, 100), rgb(255, 200, 0));
+    padding: 1rem 3rem;
+    margin: 15px;
+    border: none;
+    border-radius: 12px;
+    color: rgb(240, 240, 240);
+    font-weight: bold;
+}

@@ -5,6 +5,7 @@ import Participants from "../../components/participants/Participants";
 import style from "./home.module.css";
 import iconStrawberry from "/iconStrawberry.svg";
 import iconRat from "/iconRat.svg";
+import BtnInscribe from "../../components/btn/BtnInscribe";
 
 const Home = () => {
   const [participants, setParticipants] = useState([]);
@@ -25,7 +26,7 @@ const Home = () => {
     <main>
       <div className={style.cont_title}>
         <h1 className={style.title}>Lua Dominance</h1>
-        <button className={style.button_register}>Inscribirse</button>
+        <BtnInscribe>Inscribirse</BtnInscribe>
         <h2 className={style}>
           Gana <strong className={style.strong_gold}>20usd</strong> o{" "}
           <strong className={style.strong_strawberry}>2400 fresas</strong>
@@ -43,7 +44,9 @@ const Home = () => {
               <Participants key={id} nick={nick} />
             ))
           ) : (
-            <p className={style.p_no_participants}>Sé el primero en participar</p>
+            <p className={style.p_no_participants}>
+              Sé el primero en participar
+            </p>
           )}
         </div>
       </div>

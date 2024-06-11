@@ -7,6 +7,7 @@ import SignUp from "./views/session/SignUp";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { setParticipant, setParticipantLogOut } from "./redux/participantSlice";
+import Tournament from "./views/tournament/Tournament";
 
 const App = () => {
 
@@ -36,7 +37,7 @@ const App = () => {
         <Route path="/profile" element={<ProfileParticipant />}></Route>
         <Route path="/signin" element={<SignIn />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>
-        {/* <Route path="/tournament" element={< />}></Route> */}
+        <Route path="/tournament" element={<Tournament />}></Route>
       </Routes>
     </>
   );
