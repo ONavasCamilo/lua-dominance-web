@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit"
 const initialState = {
     login: false,
     participant: {},
-    token: null
+    token: null,
+    participations: [],
 }
 
 export const ParticipantSlice = createSlice({

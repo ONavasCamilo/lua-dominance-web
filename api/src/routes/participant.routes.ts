@@ -10,11 +10,10 @@ import {
 } from "../controllers/participant.controller";
 import signUpMiddleware from "../middlewares/signUp.middleware";
 import updatePasswordMiddleware from "../middlewares/updatePassword.middleware";
-import { isAdmin } from "../middlewares/isAdmin.middleware";
 
 const participantRouter = Router();
 
-participantRouter.get("/", [verifyToken, isAdmin], getParticipants);
+participantRouter.get("/", getParticipants);
 
 participantRouter.get("/:id", verifyToken, getParticipantById);
 
