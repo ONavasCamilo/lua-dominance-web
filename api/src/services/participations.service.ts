@@ -24,6 +24,12 @@ export const inscribeParticipationService = async (
   participation.tournament = tournament;
   await ParticipationModel.save(participation);
   tournament.participants += 1;
-  TournamentModel.save(tournament);
-  return "Inscrito a torneo correctamente";
+  await TournamentModel.save(tournament);
+  const participationDB = await ParticipationModel.findOne({
+    where: {
+      id: participation.id,
+    },
+    relations: ["tournament"]
+  });
+  return participationDB;
 };

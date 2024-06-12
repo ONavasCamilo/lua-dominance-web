@@ -1,14 +1,18 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import style from "./BtnInscribe.module.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { VITE_POST_PARTICIPATIONS_INSCRIBE } from "../../config/env.config";
+import { addParticipation } from "../../redux/participantSlice";
 
 const BtnInscribe = ({ children }) => {
   const login = useSelector((state) => state.login);
   const participant = useSelector((state) => state.participant);
+  const participations = useSelector((state) => state.participations)
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  console.log(participations)
 
   const handleOnClick = () => {
     if (!login) {
@@ -21,7 +25,7 @@ const BtnInscribe = ({ children }) => {
     axios
       .post(VITE_POST_PARTICIPATIONS_INSCRIBE, body)
       .then(({ data }) => {
-        console.log(data);
+        dispatch(addParticipation(data))
       })
       .catch((err) => console.log(err));
   };
