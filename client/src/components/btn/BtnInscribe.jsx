@@ -28,7 +28,8 @@ const BtnInscribe = ({ children }) => {
         dispatch(addParticipation(data))
       })
       .catch((err) => console.log(err));
-  };
+    };
+    console.log(participations)
   return (
     <button onClick={handleOnClick} className={style.btn_inscribe_tournament}>
       {children}
