@@ -26,10 +26,10 @@ const BtnInscribe = ({ children }) => {
       .post(VITE_POST_PARTICIPATIONS_INSCRIBE, body)
       .then(({ data }) => {
         dispatch(addParticipation(data))
+        window.localStorage.setItem("participation", JSON.stringify(data));
       })
       .catch((err) => console.log(err));
     };
-    console.log(participations)
   return (
     <button onClick={handleOnClick} className={style.btn_inscribe_tournament}>
       {children}

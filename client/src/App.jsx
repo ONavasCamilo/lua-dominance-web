@@ -6,28 +6,36 @@ import SignIn from "./views/session/SignIn";
 import SignUp from "./views/session/SignUp";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { setParticipant, setParticipantLogOut } from "./redux/participantSlice";
+import {
+  addParticipation,
+  setParticipant,
+  setParticipantLogOut,
+} from "./redux/participantSlice";
 import Tournament from "./views/tournament/Tournament";
 
 const App = () => {
-
   const login = useSelector((state) => state.login);
   const dispatch = useDispatch();
 
   const getLocalStorage = () => {
     const participantData = window.localStorage.getItem("participant");
-      if (!participantData) {
-        return dispatch(setParticipantLogOut({}));
-      }
-      const participantDataParse = JSON.parse(participantData);
-      return dispatch(setParticipant(participantDataParse));
+    const participationData = window.localStorage.getItem("participation");
+    if (participationData) {
+      const participationDataParse = JSON.parse(participationData);
+      dispatch(addParticipation(participationDataParse));
     }
-  
+    if (!participantData) {
+      return dispatch(setParticipantLogOut({}));
+    }
+    const participantDataParse = JSON.parse(participantData);
+    return dispatch(setParticipant(participantDataParse));
+  };
+
   useEffect(() => {
-    if (!login) { 
-      getLocalStorage()
-  }
-})
+    if (!login) {
+      getLocalStorage();
+    }
+  });
 
   return (
     <>
