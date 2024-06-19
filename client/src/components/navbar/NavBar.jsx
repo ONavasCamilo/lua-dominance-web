@@ -1,8 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
-import { setParticipantLogOut } from "../../redux/participantSlice";
-import style from "./NavBar.module.css"
-import iconLogout from "/iconLogout.svg"
+import {
+  setParticipantLogOut,
+  setParticipationLogOut,
+} from "../../redux/participantSlice";
+import style from "./NavBar.module.css";
+import iconLogout from "/iconLogout.svg";
 
 const NavBar = () => {
   const login = useSelector((state) => state.login);
@@ -12,7 +15,9 @@ const NavBar = () => {
 
   const onClickLogOut = () => {
     dispatch(setParticipantLogOut({}));
+    dispatch(setParticipationLogOut({}));
     window.localStorage.removeItem("participant");
+    window.localStorage.removeItem("participation");
     navigate("/");
   };
   return (
@@ -23,7 +28,11 @@ const NavBar = () => {
         {!login && <NavLink to="/signin">Iniciar sesión</NavLink>}
         {!login && <NavLink to="/signup">Registrarse</NavLink>}
         {login && <NavLink to="/tournament">Torneo</NavLink>}
-        {login && <button onClick={onClickLogOut} className={style.logout}>Cerrar sesión <img src={iconLogout} alt="icono logout" /></button>}
+        {login && (
+          <button onClick={onClickLogOut} className={style.logout}>
+            Cerrar sesión <img src={iconLogout} alt="icono logout" />
+          </button>
+        )}
       </ul>
     </nav>
   );

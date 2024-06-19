@@ -28,10 +28,14 @@ export const ParticipantSlice = createSlice({
       };
     },
     setParticipationLogOut: (state, action) => {
-      state.participations = action.payload
-    }
+      state.participations = action.payload;
+    },
   },
 });
 
-export const { setParticipant, setParticipantLogOut, addParticipation, setParticipationLogOut } =
-  ParticipantSlice.actions;
+export const {
+  setParticipant,
+  setParticipantLogOut,
+  addParticipation,
+  setParticipationLogOut,
+} = ParticipantSlice.actions;
