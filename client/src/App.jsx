@@ -7,9 +7,9 @@ import SignUp from "./views/session/SignUp";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {
-  addParticipation,
   setParticipant,
   setParticipantLogOut,
+  setParticipationLogOut,
 } from "./redux/participantSlice";
 import Tournament from "./views/tournament/Tournament";
 
@@ -22,13 +22,18 @@ const App = () => {
     const participationData = window.localStorage.getItem("participation");
     if (participationData) {
       const participationDataParse = JSON.parse(participationData);
-      dispatch(addParticipation(participationDataParse));
+      dispatch(setParticipationLogOut(participationDataParse));
+    }
+    if (!participationData) {
+      dispatch(setParticipationLogOut([]));
+    }
+    if (participantData) {
+      const participantDataParse = JSON.parse(participantData);
+      dispatch(setParticipant(participantDataParse));
     }
     if (!participantData) {
-      return dispatch(setParticipantLogOut({}));
+      dispatch(setParticipantLogOut({}));
     }
-    const participantDataParse = JSON.parse(participantData);
-    return dispatch(setParticipant(participantDataParse));
   };
 
   useEffect(() => {

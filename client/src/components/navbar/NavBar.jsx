@@ -15,7 +15,7 @@ const NavBar = () => {
 
   const onClickLogOut = () => {
     dispatch(setParticipantLogOut({}));
-    dispatch(setParticipationLogOut({}));
+    dispatch(setParticipationLogOut([]));
     window.localStorage.removeItem("participant");
     window.localStorage.removeItem("participation");
     navigate("/");

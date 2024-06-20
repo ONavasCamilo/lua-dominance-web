@@ -12,7 +12,6 @@ const BtnInscribe = ({ children }) => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  console.log(participations)
 
   const handleOnClick = () => {
     if (!login) {
@@ -26,7 +25,10 @@ const BtnInscribe = ({ children }) => {
       .post(VITE_POST_PARTICIPATIONS_INSCRIBE, body)
       .then(({ data }) => {
         dispatch(addParticipation(data))
-        window.localStorage.setItem("participation", JSON.stringify(data));
+        const dataArray = [
+          data,
+        ]
+        window.localStorage.setItem("participation", JSON.stringify(dataArray));
       })
       .catch((err) => console.log(err));
     };
