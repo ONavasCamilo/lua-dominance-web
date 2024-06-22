@@ -7,3 +7,14 @@
     color: rgb(240, 240, 240);
     font-weight: bold;
 }
+
+.btn_registered_tournament {
+    background: linear-gradient(to right, rgb(150, 255, 150), rgb(100, 200, 100));
+    padding: 1rem 3rem;
+    margin: 15px;
+    border: none;
+    border-radius: 12px;
+    color: rgb(40, 100, 40);
+    font-weight: bold;
+    cursor: default;
+}

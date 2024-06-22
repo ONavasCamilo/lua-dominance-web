@@ -5,7 +5,7 @@ const Tournament = () => {
     return (
         <div className={style.cont_tournament}>
         <h2 className={style.h2_tournament}>Lua dominance</h2>
-        <BtnInscribe>Inscribirse</BtnInscribe>
+        <BtnInscribe />
         </div>
     )
 }

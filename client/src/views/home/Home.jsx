@@ -26,7 +26,7 @@ const Home = () => {
     <main>
       <div className={style.cont_title}>
         <h1 className={style.title}>Lua Dominance</h1>
-        <BtnInscribe>Inscribirse</BtnInscribe>
+        <BtnInscribe />
         <h2 className={style}>
           Gana <strong className={style.strong_gold}>20usd</strong> o{" "}
           <strong className={style.strong_strawberry}>2400 fresas</strong>
