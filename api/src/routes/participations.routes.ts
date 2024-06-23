@@ -1,7 +1,9 @@
 import { Router } from "express";
-import { inscribeParticipation } from "../controllers/participations.controller";
+import { getParticipants, inscribeParticipation } from "../controllers/participations.controller";
 
 const participantionsRouter = Router();
+
+participantionsRouter.get("/participants", getParticipants)
 
 participantionsRouter.post("/inscribe", inscribeParticipation);
 

@@ -33,3 +33,13 @@ export const inscribeParticipationService = async (
   });
   return participationDB;
 };
+
+export const getParticipantsService = async () => {
+  const participants = await ParticipationModel.find({
+    relations: {
+      participant: true,
+      tournament: true,
+    }
+  })
+  return participants;
+}

@@ -1,10 +1,10 @@
 import { Router } from "express";
-import participantRouter from "./participant.routes";
+import usersRouter from "./users.routes";
 import participantionsRouter from "./participations.routes";
 
 const router = Router();
 
-router.use("/participants", participantRouter);
+router.use("/users", usersRouter);
 router.use("/participations", participantionsRouter)
 
 export default router;

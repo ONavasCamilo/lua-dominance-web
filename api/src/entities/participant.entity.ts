@@ -32,6 +32,7 @@ export class Participant extends BaseEntity {
     type: "varchar",
     length: 80,
     nullable: false,
+    select: false,
   })
   password: string;
 
