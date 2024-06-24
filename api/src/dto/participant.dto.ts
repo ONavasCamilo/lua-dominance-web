@@ -1,5 +1,7 @@
 import {
+  IsEmpty,
   IsNotEmpty,
+  IsNumber,
   IsOptional,
   IsString,
   Matches,
@@ -29,6 +31,9 @@ export class signUpDto {
   @IsNotEmpty()
   @IsString()
   confirmpassword: string;
+
+  @IsEmpty()
+  numberOfParticipations?: number;
 }
 
 export class updatePasswordDto {

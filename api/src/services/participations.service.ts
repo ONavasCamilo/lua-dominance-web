@@ -19,6 +19,8 @@ export const inscribeParticipationService = async (
   });
   if (registered)
     throw new Error("El participante ya está inscrito en este torneo");
+  participant.numberOfParticipations += 1;
+  await ParticipantModel.save(participant);
   const participation = new Participation();
   participation.participant = participant;
   participation.tournament = tournament;
@@ -29,7 +31,7 @@ export const inscribeParticipationService = async (
     where: {
       id: participation.id,
     },
-    relations: ["tournament"]
+    relations: ["tournament"],
   });
   return participationDB;
 };
@@ -39,7 +41,7 @@ export const getParticipantsService = async () => {
     relations: {
       participant: true,
       tournament: true,
-    }
-  })
+    },
+  });
   return participants;
-}
+};

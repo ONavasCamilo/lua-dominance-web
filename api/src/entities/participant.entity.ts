@@ -36,6 +36,12 @@ export class Participant extends BaseEntity {
   })
   password: string;
 
+  @Column({
+    type: "int",
+    default: 0,
+  })
+  numberOfParticipations: number;
+
   @ManyToOne(() => Role, (role) => role.participant, {
     cascade: true,
   })

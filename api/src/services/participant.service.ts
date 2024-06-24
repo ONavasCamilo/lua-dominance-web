@@ -39,6 +39,7 @@ export const signUpService = async (participant: signUpDto) => {
 export const signInService = async (nick: string, password: string) => {
   const participant = await ParticipantModel.findOne({
     where: { nick },
+    select: ['id', 'password', 'nick', 'discord', 'numberOfParticipations'],
     relations: ["role"],
   });
   if (!participant) throw new Error("Credenciales incorrectas");
