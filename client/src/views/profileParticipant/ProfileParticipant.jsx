@@ -39,7 +39,7 @@ const ProfileParticipant = () => {
         src={iconCheese}
         alt="icono cheese"
       />
-      <span className={style.tournament_participant}>Participaciones: 0</span>
+      <span className={style.tournament_participant}>Participaciones: {participant.numberOfParticipations}</span>
       <button
         onClick={handleClickTournament}
         className={style.button_participant}

@@ -3,7 +3,7 @@ import style from "./BtnInscribe.module.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { VITE_POST_PARTICIPATIONS_INSCRIBE } from "../../config/env.config";
-import { addParticipation } from "../../redux/participantSlice";
+import { addParticipation, setParticipant } from "../../redux/participantSlice";
 
 const BtnInscribe = () => {
   const login = useSelector((state) => state.login);
@@ -27,6 +27,8 @@ const BtnInscribe = () => {
         dispatch(addParticipation(data));
         const dataArray = [data];
         window.localStorage.setItem("participation", JSON.stringify(dataArray));
+        dispatch(setParticipant(data))
+        window.localStorage.setItem("participant", JSON.stringify(data))
       })
       .catch((err) => console.log(err));
   };

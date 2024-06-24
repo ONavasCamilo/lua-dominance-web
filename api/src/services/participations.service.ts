@@ -31,7 +31,7 @@ export const inscribeParticipationService = async (
     where: {
       id: participation.id,
     },
-    relations: ["tournament"],
+    relations: ["tournament", "participant"],
   });
   return participationDB;
 };
