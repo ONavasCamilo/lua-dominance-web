@@ -91,10 +91,7 @@ export const updateDiscordParticipant = async (req: Request, res: Response) => {
   try {
     validateDiscord(discord);
     const participant = await updateDiscordParticipantService(id, discord);
-    return res.status(202).json({
-      status: "Discord modificado correctamente",
-      participant,
-    });
+    return res.status(202).json(participant);
   } catch (err) {
     if (err instanceof Error) {
       res.status(400).json({ statusCode: 400, message: err.message });

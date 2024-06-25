@@ -73,3 +73,14 @@
   font-weight: bold;
   background: linear-gradient(to left, rgb(255, 100, 100), rgb(255, 200, 0));
 }
+
+.add_btnDiscord_participant {
+  background-color: transparent;
+  color: #ccc;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  grid-column: 2 / 4;
+  font-weight: bold;
+  width: 80%;
+}

@@ -30,6 +30,9 @@ export const ParticipantSlice = createSlice({
     setParticipationLogOut: (state, action) => {
       state.participations = action.payload;
     },
+    setParticipantDiscord: (state, action) => {
+      state.participant.discord = action.payload
+    }
   },
 });
 
@@ -38,4 +41,5 @@ export const {
   setParticipantLogOut,
   addParticipation,
   setParticipationLogOut,
+  setParticipantDiscord
 } = ParticipantSlice.actions;

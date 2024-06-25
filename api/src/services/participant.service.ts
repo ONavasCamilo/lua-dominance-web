@@ -59,8 +59,7 @@ export const updateDiscordParticipantService = async (
     throw new Error("El discord debe ser diferente al actual");
   participant.discord = discord;
   await ParticipantModel.save(participant);
-  const { password, ...withoutPassword } = participant;
-  return withoutPassword;
+  return participant
 };
 
 export const updatePasswordParticipantService = async (
